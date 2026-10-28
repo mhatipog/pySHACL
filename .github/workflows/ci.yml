@@ -55,10 +55,10 @@ jobs:
           source venv/bin/activate
           make lint
 
-    - name: Run type checking
+    - name: Run issue #314 regression tests
       run: |
           source venv/bin/activate
-          make type-check
+          poetry run pytest -q test/issues/test_314.py
 
     - name: Install tox
       run: |
@@ -73,3 +73,8 @@ jobs:
       run: |
           source venv/bin/activate
           tox --skip-pkg-install
+
+    - name: Run type checking
+      run: |
+          source venv/bin/activate
+          make type-check
